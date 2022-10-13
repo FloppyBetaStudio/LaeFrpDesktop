@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="12"/>
+    <BuildModes Active="Release"/>
+    <Units>
+      <Unit>
+        <Filename Value="LaeFrpDesktop.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="90"/>
+      </Unit>
+      <Unit>
+        <Filename Value="formmain.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="MainForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="FormMain"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="739"/>
+        <CursorPos X="32" Y="741"/>
+        <FoldState Value=" T3k10N0J12 p5tS0K041 TMwF21)"/>
+        <UsageCount Value="90"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="D:\fpcupdeluxe\lazarus\lcl\dialogs.pp"/>
+        <UnitName Value="Dialogs"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="23"/>
+        <CursorPos X="3" Y="37"/>
+        <UsageCount Value="6"/>
+      </Unit>
+      <Unit>
+        <Filename Value="D:\fpcupdeluxe\lazarus\components\lazutils\uitypes.pas"/>
+        <UnitName Value="UITypes"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="21"/>
+        <CursorPos X="3" Y="36"/>
+        <UsageCount Value="6"/>
+      </Unit>
+      <Unit>
+        <Filename Value="D:\fpcupdeluxe\fpcsrc\packages\rtl-objpas\src\inc\system.uitypes.pp"/>
+        <UnitName Value="System.UITypes"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="183"/>
+        <CursorPos X="3" Y="198"/>
+        <UsageCount Value="6"/>
+      </Unit>
+      <Unit>
+        <Filename Value="D:\fpcupdeluxe\lazarus\lcl\grids.pas"/>
+        <UnitName Value="Grids"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="10118"/>
+        <CursorPos Y="10133"/>
+        <UsageCount Value="6"/>
+      </Unit>
+      <Unit>
+        <Filename Value="D:\fpcupdeluxe\lazarus\lcl\include\control.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1602"/>
+        <CursorPos Y="1615"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="D:\fpcupdeluxe\lazarus\lcl\include\buttoncontrol.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="7"/>
+        <CursorPos Y="22"/>
+        <UsageCount Value="7"/>
+      </Unit>
+      <Unit>
+        <Filename Value="D:\fpcupdeluxe\lazarus\lcl\include\buttons.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="155"/>
+        <CursorPos Y="170"/>
+        <UsageCount Value="7"/>
+      </Unit>
+      <Unit>
+        <Filename Value="D:\fpcupdeluxe\lazarus\lcl\include\wincontrol.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="5380"/>
+        <CursorPos Y="5392"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="D:\fpcupdeluxe\lazarus\lcl\lclmessageglue.pas"/>
+        <UnitName Value="LCLMessageGlue"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="96"/>
+        <CursorPos Y="116"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="D:\fpcupdeluxe\lazarus\lcl\interfaces\win32\win32callback.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2774"/>
+        <CursorPos Y="2786"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="D:\fpcupdeluxe\lazarus\lcl\interfaces\win32\win32pagecontrol.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="91"/>
+        <CursorPos Y="105"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="D:\fpcupdeluxe\lazarus\lcl\include\application.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1387"/>
+        <CursorPos Y="1399"/>
+        <UsageCount Value="11"/>
+      </Unit>
+      <Unit>
+        <Filename Value="D:\fpcupdeluxe\fpcsrc\rtl\objpas\sysutils\sysutilh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="265"/>
+        <CursorPos X="3" Y="280"/>
+        <UsageCount Value="7"/>
+      </Unit>
+      <Unit>
+        <Filename Value="D:\fpcupdeluxe\fpcsrc\rtl\win\syswinh.inc"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="2" Y="19"/>
+        <UsageCount Value="7"/>
+      </Unit>
+      <Unit>
+        <Filename Value="D:\fpcupdeluxe\fpcsrc\packages\fcl-process\src\processbody.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="143"/>
+        <CursorPos X="14" Y="154"/>
+        <UsageCount Value="8"/>
+      </Unit>
+      <Unit>
+        <Filename Value="D:\fpcupdeluxe\fpcsrc\packages\fcl-process\src\process.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="13"/>
+        <CursorPos X="49" Y="25"/>
+        <UsageCount Value="8"/>
+      </Unit>
+      <Unit>
+        <Filename Value="D:\fpcupdeluxe\fpcsrc\packages\openssl\src\opensslsockets.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="41"/>
+        <CursorPos X="17" Y="59"/>
+        <UsageCount Value="15"/>
+      </Unit>
+      <Unit>
+        <Filename Value="D:\fpcupdeluxe\fpcsrc\packages\openssl\src\openssl.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="5780"/>
+        <CursorPos X="26" Y="5800"/>
+        <UsageCount Value="15"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="29">
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="530" TopLine="515"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="532" TopLine="515"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="537" TopLine="518"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="530" TopLine="518"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="532" TopLine="518"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="537" TopLine="518"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="530" TopLine="518"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="532" TopLine="518"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="530" TopLine="518"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="523" TopLine="518"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="527" TopLine="518"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="526" TopLine="518"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="527" TopLine="518"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="526" TopLine="518"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="527" TopLine="518"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="525" TopLine="518"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="529" TopLine="518"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="528" TopLine="518"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="529" Column="23" TopLine="517"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="532" TopLine="517"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="531" Column="76" TopLine="518"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="520" TopLine="516"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="736" Column="8" TopLine="733"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="741" Column="7" TopLine="733"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="733" TopLine="728"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="68" Column="58" TopLine="58"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="275" Column="3" TopLine="301"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="311" Column="37" TopLine="299"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="332" Column="3" TopLine="329"/>
+      </Position>
+      <Position>
+        <Filename Value="formmain.pas"/>
+        <Caret Line="341" Column="10" TopLine="330"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+  <Debugging>
+    <BreakPoints>
+      <Item>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="formmain.pas"/>
+        <Line Value="505"/>
+      </Item>
+    </BreakPoints>
+    <Watches>
+      <Item>
+        <Expression Value="TempConfigFileList[i]"/>
+      </Item>
+    </Watches>
+  </Debugging>
+</CONFIG>

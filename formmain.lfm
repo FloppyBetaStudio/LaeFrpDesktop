@@ -75,7 +75,9 @@ object MainForm: TMainForm
       Top = 88
       Width = 104
       Caption = '映射中'
+      Color = clWhite
       Font.Height = -24
+      ParentColor = False
       ParentFont = False
       TabOrder = 0
       Visible = False
@@ -85,8 +87,8 @@ object MainForm: TMainForm
       Height = 32
       Top = 8
       Width = 8
-      Brush.Color = clHotLight
-      Pen.Color = clHotLight
+      Brush.Color = clTeal
+      Pen.Color = clTeal
     end
   end
   object MainPageControl: TPageControl
@@ -94,9 +96,9 @@ object MainForm: TMainForm
     Height = 347
     Top = 0
     Width = 500
-    ActivePage = SheetMyTunnels
+    ActivePage = SheetServerList
     Anchors = [akTop, akLeft, akRight, akBottom]
-    TabIndex = 2
+    TabIndex = 1
     TabOrder = 1
     OnChange = MainPageControlChange
     OnChanging = MainPageControlChanging
@@ -160,7 +162,7 @@ object MainForm: TMainForm
         Width = 103
         Caption = '点我去获取API密钥'
         Color = clDefault
-        Font.Color = clMenuHighlight
+        Font.Color = clHighlight
         ParentColor = False
         ParentFont = False
         OnClick = Label4Click
@@ -412,15 +414,6 @@ object MainForm: TMainForm
         Width = 310
         Caption = '你可以在这里开启和关闭FRP映射'#13#10'在此之前请先确保你在“我的隧道”中启用了你所需要的隧道'
       end
-      object ToggleBox1: TToggleBox
-        Left = 8
-        Height = 25
-        Top = 48
-        Width = 80
-        Caption = '启用映射'
-        OnChange = ToggleBox1Change
-        TabOrder = 0
-      end
       object MemoServiceLog: TMemo
         Left = 8
         Height = 232
@@ -432,7 +425,26 @@ object MainForm: TMainForm
         )
         ReadOnly = True
         ScrollBars = ssAutoVertical
+        TabOrder = 0
+      end
+      object Button1: TButton
+        Left = 8
+        Height = 25
+        Top = 48
+        Width = 75
+        Caption = '开启服务'
+        OnClick = Button1Click
         TabOrder = 1
+      end
+      object Button2: TButton
+        Left = 88
+        Height = 25
+        Top = 48
+        Width = 75
+        Caption = '停止服务'
+        Enabled = False
+        OnClick = Button2Click
+        TabOrder = 2
       end
     end
   end

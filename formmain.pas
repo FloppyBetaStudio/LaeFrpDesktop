@@ -23,6 +23,8 @@ type
     BCMaterialDesignButton7: TBCMaterialDesignButton;
     BCMaterialDesignButton8: TBCMaterialDesignButton;
     BCMaterialDesignButtonSaveAPIKey: TBCMaterialDesignButton;
+    Button1: TButton;
+    Button2: TButton;
     ButtonMyTunnelListRefresh: TButton;
     ButtonNT_Create: TButton;
     ButtonServerListRefresh: TButton;
@@ -52,7 +54,6 @@ type
     SheetServiceStatus: TTabSheet;
     TimerSelectBarMove: TTimer;
     TimerServicePipe: TTimer;
-    ToggleBox1: TToggleBox;
     procedure BCMaterialDesignButton1Click(Sender: TObject);
     procedure BCMaterialDesignButton2Click(Sender: TObject);
     procedure BCMaterialDesignButton3Click(Sender: TObject);
@@ -62,6 +63,8 @@ type
     procedure BCMaterialDesignButton7Click(Sender: TObject);
     procedure BCMaterialDesignButton8Click(Sender: TObject);
     procedure BCMaterialDesignButtonSaveAPIKeyClick(Sender: TObject);
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
     procedure ButtonMyTunnelListRefreshClick(Sender: TObject);
     procedure ButtonNT_CreateClick(Sender: TObject);
     procedure ButtonServerListRefreshClick(Sender: TObject);
@@ -80,7 +83,6 @@ type
       var Handled: boolean);
     procedure TimerSelectBarMoveTimer(Sender: TObject);
     procedure TimerServicePipeTimer(Sender: TObject);
-    procedure ToggleBox1Change(Sender: TObject);
 
     procedure UIChangeMenuSelected(TargetButton: TBCMaterialDesignButton);
   private
@@ -113,14 +115,19 @@ var
   FrpThreadArray: array of TFrpProcessThread;
 
 
-  UI_SelectedItemTop: Integer;
+  UI_SelectedItemTop: integer;
+
 const
   urlBackend = 'https://api.lae.yistars.net/api';
   productName = 'FBSFS/LaeFrpDesktop';
-  productVersion = 'b1';
+  productVersion = 'b2';
 
-  //文件在本程序目录下的相对路径(不包含第一个斜杠)
+//文件在本程序目录下的相对路径(不包含第一个斜杠)
+  {$ifdef Win64}
   fileFRPC = 'frpc.exe';
+  {$elseif defined(Linux)}
+  fileFRPC = 'frpc';
+  {$endif}
 
 implementation
 
@@ -137,7 +144,7 @@ begin
   while index >= 0 do
   begin
     index := Pos('\u', sStr) - 1;
-    Result:='';
+    Result := '';
     if index < 0 then         //非 unicode编码不转换 ,自动过滤
     begin
       last := sStr;
@@ -189,18 +196,7 @@ begin
   tmpStream := TStringStream.Create();
   try
     tmpClient.HTTPMethod('GET', urlBackend + uriPath, tmpStream, [200, 401, 400]);
-  finally
-    //ShowMessage(tmpStream.DataString);
-    if (tmpClient.ResponseStatusCode = 200) then
-      exit(UnicodeToChinese(tmpStream.DataString))
-    else if (tmpClient.ResponseStatusCode = 400) then
-    begin
-      MessageDlg('发生错误',
-        '后端返回400错误，我觉得你可能是没好好填参数',
-        mtError,
-        [mbYes], '');
-    end
-    else
+  except
     begin
       MessageDlg('发生错误',
         '向后端接口发送get请求时发生错误，请重启应用程序:' +
@@ -209,6 +205,16 @@ begin
         [mbYes], '');
       Halt;
     end;
+  end;
+  //ShowMessage(tmpStream.DataString);
+  if (tmpClient.ResponseStatusCode = 200) then
+    exit(UnicodeToChinese(tmpStream.DataString))
+  else if (tmpClient.ResponseStatusCode = 400) then
+  begin
+    MessageDlg('发生错误',
+      '后端返回400错误，我觉得你可能是没好好填参数',
+      mtError,
+      [mbYes], '');
   end;
 
 end;
@@ -239,9 +245,11 @@ end;
 
 procedure TMainForm.TimerSelectBarMoveTimer(Sender: TObject);
 begin
-  if ShapeSelectBar.Top<UI_SelectedItemTop then ShapeSelectBar.Top:=ShapeSelectBar.Top+4;
-  if ShapeSelectBar.Top>UI_SelectedItemTop then ShapeSelectBar.Top:=ShapeSelectBar.Top-4;
-  if ShapeSelectBar.Top=UI_SelectedItemTop then TimerSelectBarMove.Interval:=0;
+  if ShapeSelectBar.Top < UI_SelectedItemTop then
+    ShapeSelectBar.Top := ShapeSelectBar.Top + 4;
+  if ShapeSelectBar.Top > UI_SelectedItemTop then
+    ShapeSelectBar.Top := ShapeSelectBar.Top - 4;
+  if ShapeSelectBar.Top = UI_SelectedItemTop then TimerSelectBarMove.Interval := 0;
 end;
 
 procedure TMainForm.TimerServicePipeTimer(Sender: TObject);
@@ -268,59 +276,6 @@ begin
   end;
 end;
 
-procedure TMainForm.ToggleBox1Change(Sender: TObject);
-var
-  configFileList: TStringList;
-  i: byte;
-begin
-  if FileExists(fileFRPC) = false then begin
-    ShowMessage('没有找到frp的可执行文件，请检查你下载并解压的软件是否完整');
-    Application.Terminate;
-  end;
-
-  configFileList := FindAllFiles(Application.Location + 'temp', '*.ini', False);
-  if ToggleBox1.State = cbChecked then
-  begin
-    //启用
-
-    if (configFileList.Count = 0) then
-    begin
-      ShowMessage('你好像还没有启用任何隧道');
-      ToggleBox1.State := cbUnchecked;
-      exit;
-    end;
-    SetLength(FrpThreadArray, configFileList.Count);
-    for i := 0 to configFileList.Count - 1 do
-    begin
-      //一股脑创建、启动就好了
-      FrpThreadArray[i] := TFrpProcessThread.Create(configFileList[i]);
-      FrpThreadArray[i].Execute;
-    end;
-    PanelHideMyTunnels.Visible := True;
-    TimerServicePipe.Interval := 500;
-    ServiceWriteLog('已启动FRP映射服务');
-    exit;
-  end;
-
-  if ToggleBox1.State = cbUnchecked then
-  begin
-    if (configFileList.Count = 0) then
-    begin
-      exit;
-    end;
-    //停用
-    TimerServicePipe.Interval := 0;
-    for i := 0 to Length(FrpThreadArray)-1 do
-    begin
-      FrpThreadArray[i].Free;
-
-    end;
-    SetLength(FrpThreadArray, 0);
-    PanelHideMyTunnels.Visible := False;
-
-    ServiceWriteLog('已停用FRP映射服务');
-  end;
-end;
 
 procedure TMainForm.BCMaterialDesignButton1Click(Sender: TObject);
 begin
@@ -330,13 +285,20 @@ end;
 
 procedure TMainForm.BCMaterialDesignButton2Click(Sender: TObject);
 begin
+  if apiKey = '' then
+  begin
+    ShowMessage('请先设置Token再使用');
+    exit;
+  end;
+
   UIChangeMenuSelected(BCMaterialDesignButton2);
   MainPageControl.ActivePageIndex := 1;
 end;
 
 procedure TMainForm.BCMaterialDesignButton3Click(Sender: TObject);
 begin
-  if apiKey='' then begin
+  if apiKey = '' then
+  begin
     ShowMessage('请先设置Token再使用');
     exit;
   end;
@@ -484,6 +446,68 @@ begin
   apiKey := LabeledEditAPIKey.Text;
 end;
 
+procedure TMainForm.Button1Click(Sender: TObject);
+var
+  configFileList: TStringList;
+  i: byte;
+begin
+  if FileExists(fileFRPC) = False then
+  begin
+    ShowMessage('没有找到frp的可执行文件，请检查你下载并解压的软件是否完整');
+    Application.Terminate;
+  end;
+
+  //启用
+
+  ConfigFileList := FindAllFiles(Application.Location + 'temp', '*.ini', False);
+
+  if (configFileList.Count = 0) then
+  begin
+    ShowMessage('你好像还没有启用任何隧道');
+    exit;
+  end;
+  SetLength(FrpThreadArray, configFileList.Count);
+  for i := 0 to configFileList.Count - 1 do
+  begin
+    //一股脑创建、启动就好了
+    FrpThreadArray[i] := TFrpProcessThread.Create(configFileList[i]);
+    FrpThreadArray[i].Execute;
+  end;
+  PanelHideMyTunnels.Visible := True;
+  TimerServicePipe.Interval := 500;
+  ServiceWriteLog('已启动FRP映射服务');
+  Button1.Enabled := False;
+  Button2.Enabled := True;
+
+end;
+
+procedure TMainForm.Button2Click(Sender: TObject);
+var
+  configFileList: TStringList;
+  i: byte;
+begin
+  ConfigFileList := FindAllFiles(Application.Location + 'temp', '*.ini', False);
+  if (configFileList.Count = 0) then
+  begin
+    exit;
+  end;
+  //停用
+  TimerServicePipe.Interval := 0;
+  for i := 0 to Length(FrpThreadArray) - 1 do
+  begin
+    FrpThreadArray[i].Free;
+
+  end;
+  SetLength(FrpThreadArray, 0);
+  PanelHideMyTunnels.Visible := False;
+
+  ServiceWriteLog('已停用FRP映射服务');
+  Button2.Enabled := False;
+  Button1.Enabled := True;
+end;
+
+
+
 procedure TMainForm.ButtonMyTunnelListRefreshClick(Sender: TObject);
 var
 
@@ -500,8 +524,10 @@ begin
   //为后续清除不必要配置文件的精彩剧情做铺垫
   TempConfigFileList := FindAllFiles(Application.Location + 'temp', '*.ini', False);
   //若没有隧道却存在隧道文件，则这个隧道文件一定不合理
-  if (TunnelsArray.Count=0) and (TempConfigFileList.Count>0) then begin
-    for i := 0 to TempConfigFileList.Count-1 do begin
+  if (TunnelsArray.Count = 0) and (TempConfigFileList.Count > 0) then
+  begin
+    for i := 0 to TempConfigFileList.Count - 1 do
+    begin
       DeleteFile(TempConfigFileList[i]);
     end;
   end;
@@ -541,7 +567,10 @@ begin
 
         //如果**有多次循环**最后一次也没判断出来隧道存在，说明隧道不存在，则删除文件
         //另外，如果没有隧道存在却有隧道配置文件，则这个配置文件一定不应该存在
-        if ((ii = TunnelsArray.Count - 1) and (ii > 0)) then
+        //b2修正：如果只有一个隧道，而且配置文件的名称与该隧道的名称不同，则删除
+        if ((ii = TunnelsArray.Count - 1) and (ii > 0)) or
+          ((TunnelsArray.Count = 1) and
+          (TunnelsArray.Objects[ii].Strings['name'] <> TempConfigFileList[i])) then
           DeleteFile(Application.Location + 'temp' + PathDelim +
             TempConfigFileList[i] + '.ini');
       end;
@@ -738,14 +767,17 @@ end;
 
 procedure TMainForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
-  ToggleBox1.State:=cbUnchecked;
+  if Button2.Enabled then
+  begin
+    Button2Click(nil);
+  end;
 end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
   MainPageControl.ActivePageIndex := 0;
-  UI_SelectedItemTop:=BCMaterialDesignButton1.Top;
-  Caption:=productName+' '+productVersion;
+  UI_SelectedItemTop := BCMaterialDesignButton1.Top;
+  Caption := productName + ' ' + productVersion;
 end;
 
 procedure TMainForm.FormShow(Sender: TObject);
@@ -766,13 +798,12 @@ begin
   //若没有登录账户则跳过获取部分步骤
 
   //DONE：展示账户信息
-  responseStr:=httpSendGet('/users');
+  responseStr := httpSendGet('/users');
   responseJSON := (GetJSON(responseStr, False) as TJSONObject).Objects['data'];
   LabelAccountInfo.Caption := Utf8ToAnsi('账户' + Utf8ToAnsi(
     responseJSON.Strings['name']) + '的信息' + LineEnding +
     '用户余额：' + Utf8ToAnsi(responseJSON.Strings['balance']) +
     LineEnding + '用户Drops：' + Utf8ToAnsi(responseJSON.Strings['drops']));
-
 
 end;
 
@@ -814,8 +845,8 @@ end;
 procedure TMainForm.UIChangeMenuSelected(TargetButton: TBCMaterialDesignButton);
 begin
   //UI_SelectedItemTop:=8+(ItemID*40);死的计算方法太该死了，不能适配其它的DPI
-  UI_SelectedItemTop:=TargetButton.Top;
-  TimerSelectBarMove.Interval:=1;
+  UI_SelectedItemTop := TargetButton.Top;
+  TimerSelectBarMove.Interval := 1;
 end;
 
 end.

@@ -194,17 +194,16 @@ begin
   tmpClient.AddHeader('authorization', 'Bearer ' + apiKey);
   tmpClient.AddHeader('user-agent', productName + productVersion);
   tmpStream := TStringStream.Create();
-  try
-    tmpClient.HTTPMethod('GET', urlBackend + uriPath, tmpStream, [200, 401, 400]);
-  except
-    begin
-      MessageDlg('发生错误',
-        '向后端接口发送get请求时发生错误，请重启应用程序:' +
-        tmpClient.ResponseStatusText,
-        mtError,
-        [mbYes], '');
-      Halt;
-    end;
+  tmpClient.HTTPMethod('GET', urlBackend + uriPath, tmpStream, [200, 401, 403, 400]);
+  if tmpClient.ResponseStatusCode <> 200 then;
+  begin
+    MessageDlg('发生错误',
+      '向后端接口发送get请求时发生错误，请尝试重启应用程序，原因:' +
+      tmpClient.ResponseStatusText+LineEnding+
+      '若重启后仍未得到解决，请尝试：检查网络连接、重新填写cookie',
+      mtError,
+      [mbYes], '');
+    Halt;
   end;
   //ShowMessage(tmpStream.DataString);
   if (tmpClient.ResponseStatusCode = 200) then

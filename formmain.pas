@@ -200,7 +200,7 @@ begin
     MessageDlg('发生错误',
       '向后端接口发送get请求时发生错误，请尝试重启应用程序，原因:' +
       tmpClient.ResponseStatusText+LineEnding+
-      '若重启后仍未得到解决，请尝试：检查网络连接、重新填写cookie',
+      '若重启后仍未得到解决，请尝试：检查网络连接、重新填写token',
       mtError,
       [mbYes], '');
     Halt;

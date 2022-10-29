@@ -4,6 +4,9 @@ Desktop client for LAE Cloud FRP service
 
 支持64位的Windows和Linux（Qt5）
 
+从Release下载存在障碍的用户请从这里下载：
+https://iruanp.lanzoub.com/b07oabraf
+密码:a4hh
 ## 依赖
 
 发布的压缩包中包含了依赖的库文件和FRP的客户端可执行文件（为了减小文件体积，这些文件都经过了UPX压缩）

@@ -3,15 +3,15 @@
   <ProjectSession>
     <PathDelim Value="\"/>
     <Version Value="12"/>
-    <BuildModes Active="Release"/>
+    <BuildModes Active="Release_Linux"/>
     <Units>
       <Unit>
         <Filename Value="LaeFrpDesktop.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="1"/>
         <TopLine Value="2"/>
-        <CursorPos Y="25"/>
-        <UsageCount Value="103"/>
+        <CursorPos Y="26"/>
+        <UsageCount Value="108"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -22,11 +22,23 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="FormMain"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="111"/>
-        <CursorPos X="23" Y="123"/>
-        <UsageCount Value="103"/>
+        <TopLine Value="700"/>
+        <CursorPos X="25" Y="711"/>
+        <UsageCount Value="108"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="unitformlogin.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormLogin"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="unitFormLogin"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="61"/>
+        <CursorPos X="16" Y="73"/>
+        <UsageCount Value="25"/>
       </Unit>
       <Unit>
         <Filename Value="D:\fpcupdeluxe\lazarus\lcl\dialogs.pp"/>
@@ -120,9 +132,9 @@
       <Unit>
         <Filename Value="D:\fpcupdeluxe\fpcsrc\rtl\objpas\sysutils\sysutilh.inc"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="265"/>
-        <CursorPos X="3" Y="280"/>
-        <UsageCount Value="7"/>
+        <TopLine Value="320"/>
+        <CursorPos X="13" Y="332"/>
+        <UsageCount Value="10"/>
       </Unit>
       <Unit>
         <Filename Value="D:\fpcupdeluxe\fpcsrc\rtl\win\syswinh.inc"/>
@@ -196,127 +208,44 @@
         <CursorPos X="31" Y="604"/>
         <UsageCount Value="10"/>
       </Unit>
+      <Unit>
+        <Filename Value="D:\fpcupdeluxe\fpcsrc\rtl\objpas\classes\classesh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1958"/>
+        <CursorPos X="16" Y="1969"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="D:\fpcupdeluxe\lazarus\lcl\lclintf.pas"/>
+        <UnitName Value="LCLIntf"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="70"/>
+        <CursorPos X="10" Y="82"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="D:\fpcupdeluxe\fpcsrc\packages\fcl-web\src\base\fphttpserver.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="138"/>
+        <CursorPos X="55" Y="151"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="D:\fpcupdeluxe\fpcsrc\rtl\inc\objpash.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="551"/>
+        <CursorPos X="19" Y="217"/>
+        <UsageCount Value="10"/>
+      </Unit>
     </Units>
-    <JumpHistory HistoryIndex="29">
+    <JumpHistory HistoryIndex="1">
       <Position>
         <Filename Value="formmain.pas"/>
-        <Caret Line="555" Column="73" TopLine="536"/>
-      </Position>
-      <Position>
-        <Filename Value="formmain.pas"/>
-        <Caret Line="562" Column="31" TopLine="543"/>
+        <Caret Line="815" TopLine="803"/>
       </Position>
       <Position>
         <Filename Value="formmain.pas"/>
-        <Caret Line="444" Column="17" TopLine="427"/>
-      </Position>
-      <Position>
-        <Filename Value="formmain.pas"/>
-        <Caret Line="452" Column="29" TopLine="441"/>
-      </Position>
-      <Position>
-        <Filename Value="formmain.pas"/>
-        <Caret Line="455" Column="21" TopLine="441"/>
-      </Position>
-      <Position>
-        <Filename Value="formmain.pas"/>
-        <Caret Line="460" Column="43" TopLine="441"/>
-      </Position>
-      <Position>
-        <Filename Value="formmain.pas"/>
-        <Caret Line="461" Column="31" TopLine="441"/>
-      </Position>
-      <Position>
-        <Filename Value="formmain.pas"/>
-        <Caret Line="464" Column="65" TopLine="445"/>
-      </Position>
-      <Position>
-        <Filename Value="formmain.pas"/>
-        <Caret Line="477" Column="17" TopLine="457"/>
-      </Position>
-      <Position>
-        <Filename Value="formmain.pas"/>
-        <Caret Line="480" Column="23" TopLine="460"/>
-      </Position>
-      <Position>
-        <Filename Value="formmain.pas"/>
-        <Caret Line="507" Column="21" TopLine="487"/>
-      </Position>
-      <Position>
-        <Filename Value="formmain.pas"/>
-        <Caret Line="515" Column="85" TopLine="495"/>
-      </Position>
-      <Position>
-        <Filename Value="formmain.pas"/>
-        <Caret Line="455" Column="81" TopLine="442"/>
-      </Position>
-      <Position>
-        <Filename Value="formmain.pas"/>
-        <Caret Line="457" Column="9" TopLine="444"/>
-      </Position>
-      <Position>
-        <Filename Value="formmain.pas"/>
-        <Caret Line="762" Column="27" TopLine="750"/>
-      </Position>
-      <Position>
-        <Filename Value="formmain.pas"/>
-        <Caret Line="84" Column="38" TopLine="75"/>
-      </Position>
-      <Position>
-        <Filename Value="formmain.pas"/>
-        <Caret Line="525" TopLine="504"/>
-      </Position>
-      <Position>
-        <Filename Value="formmain.pas"/>
-        <Caret Line="564" Column="56" TopLine="547"/>
-      </Position>
-      <Position>
-        <Filename Value="formmain.pas"/>
-        <Caret Line="565" Column="59" TopLine="550"/>
-      </Position>
-      <Position>
-        <Filename Value="formmain.pas"/>
-        <Caret Line="567" Column="33" TopLine="555"/>
-      </Position>
-      <Position>
-        <Filename Value="formmain.pas"/>
-        <Caret Line="261" Column="3" TopLine="254"/>
-      </Position>
-      <Position>
-        <Filename Value="formmain.pas"/>
-        <Caret Line="288" Column="3" TopLine="286"/>
-      </Position>
-      <Position>
-        <Filename Value="formmain.pas"/>
-        <Caret Line="294" TopLine="286"/>
-      </Position>
-      <Position>
-        <Filename Value="formmain.pas"/>
-        <Caret Line="293" Column="5" TopLine="285"/>
-      </Position>
-      <Position>
-        <Filename Value="LaeFrpDesktop.lpr"/>
-        <Caret Line="3" Column="20"/>
-      </Position>
-      <Position>
-        <Filename Value="LaeFrpDesktop.lpr"/>
-        <Caret Line="4"/>
-      </Position>
-      <Position>
-        <Filename Value="LaeFrpDesktop.lpr"/>
-        <Caret Line="25" TopLine="2"/>
-      </Position>
-      <Position>
-        <Filename Value="formmain.pas"/>
-        <Caret Line="293" Column="5" TopLine="285"/>
-      </Position>
-      <Position>
-        <Filename Value="formmain.pas"/>
-        <Caret Line="778" Column="3" TopLine="776"/>
-      </Position>
-      <Position>
-        <Filename Value="formmain.pas"/>
-        <Caret Line="788" Column="3" TopLine="759"/>
+        <Caret Line="438" Column="58" TopLine="438"/>
       </Position>
     </JumpHistory>
     <RunParams>
@@ -327,7 +256,7 @@
   <Debugging>
     <Watches>
       <Item>
-        <Expression Value="TempConfigFileList[i]"/>
+        <Expression Value="threadLoginServer.tmpServer.Active"/>
       </Item>
     </Watches>
   </Debugging>

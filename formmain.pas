@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, fphttpclient, Forms, Controls, Graphics, Dialogs, ExtCtrls,
   ComCtrls, StdCtrls, Grids, BCMaterialDesignButton, fpjson, jsonparser, IniFiles,
-  opensslsockets, Types, LCLIntf, FileUtil, process, UTF8Process;
+  opensslsockets, Types, LCLIntf, FileUtil, process, UTF8Process, unitFormLogin;
 
 type
 
@@ -38,6 +38,8 @@ type
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
     LabelAccountInfo: TLabel;
     LabeledEditAPIKey: TLabeledEdit;
     MainPageControl: TPageControl;
@@ -73,6 +75,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure Label4Click(Sender: TObject);
+    procedure Label7Click(Sender: TObject);
     procedure LabeledEditAPIKeyChange(Sender: TObject);
 
     function httpSendGet(uriPath: string): string;
@@ -120,7 +123,7 @@ var
 const
   urlBackend = 'https://api.lae.yistars.net/api';
   productName = 'FBSFS/LaeFrpDesktop';
-  productVersion = 'b2';
+  productVersion = 'b4';
 
 //文件在本程序目录下的相对路径(不包含第一个斜杠)
   {$ifdef Win64}
@@ -194,27 +197,21 @@ begin
   tmpClient.AddHeader('authorization', 'Bearer ' + apiKey);
   tmpClient.AddHeader('user-agent', productName + productVersion);
   tmpStream := TStringStream.Create();
-  tmpClient.HTTPMethod('GET', urlBackend + uriPath, tmpStream, [200, 401, 403, 400]);
-  if tmpClient.ResponseStatusCode <> 200 then;
+  tmpClient.HTTPMethod('GET', urlBackend + uriPath, tmpStream, [200, 401, 403, 400, 302]);
+  //ShowMessage(tmpStream.DataString);
+  if (tmpClient.ResponseStatusCode = 200) then
+    exit(UnicodeToChinese(tmpStream.DataString));
+  if (tmpClient.ResponseStatusCode <> 200) then;
   begin
     MessageDlg('发生错误',
-      '向后端接口发送get请求时发生错误，请尝试重启应用程序，原因:' +
-      tmpClient.ResponseStatusText+LineEnding+
-      '若重启后仍未得到解决，请尝试：检查网络连接、重新填写token',
+      '向后端接口发送get请求时发生错误'+IntToStr(tmpClient.ResponseStatusCode)+'，请尝试重启应用程序，原因:' +
+      tmpStream.DataString+LineEnding+
+      '若重启后仍未得到解决，请尝试：检查网络连接、重新填写token、删除本程序目录中的config.ini',
       mtError,
       [mbYes], '');
     Halt;
   end;
-  //ShowMessage(tmpStream.DataString);
-  if (tmpClient.ResponseStatusCode = 200) then
-    exit(UnicodeToChinese(tmpStream.DataString))
-  else if (tmpClient.ResponseStatusCode = 400) then
-  begin
-    MessageDlg('发生错误',
-      '后端返回400错误，我觉得你可能是没好好填参数',
-      mtError,
-      [mbYes], '');
-  end;
+
 
 end;
 
@@ -808,7 +805,13 @@ end;
 
 procedure TMainForm.Label4Click(Sender: TObject);
 begin
-  OpenURL('https://auth.laecloud.com/');
+  OpenURL('https://api.laecloud.com/');
+end;
+
+procedure TMainForm.Label7Click(Sender: TObject);
+begin
+  FormLogin:=TFormLogin.Create(MainForm);
+  FormLogin.ShowModal;
 end;
 
 procedure TMainForm.LabeledEditAPIKeyChange(Sender: TObject);

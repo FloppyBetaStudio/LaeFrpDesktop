@@ -30,3 +30,11 @@ https://iruanp.lanzoub.com/b07oabraf
 ## 常见问题
 
 我觉得不会有什么大问题，除了权限设置问题，所以请确保你有权限运行主程序和frpc，并且主程序有权限调用所需要的库文件
+
+## 找不到库文件
+
+请安装libqt5pas1
+
+在Debian系的发行版上请执行 `sudo apt install libqt5pas1`
+
+(别的发行版我不用，所以我不知道)
